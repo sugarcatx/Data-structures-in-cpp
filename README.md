@@ -17,7 +17,7 @@ Traverse is done is 2 way.
 
 ### Deletion:
 
-    >5 types of deletion operations.
+   > 5 types of deletion operations.
     
     1. First delete
     2. Last delete

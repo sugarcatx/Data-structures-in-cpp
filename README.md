@@ -1,4 +1,4 @@
-# Data-structures-in-cpp
+# Two way linkedlist (aka Double linkedlist)
 
 <hr>
 

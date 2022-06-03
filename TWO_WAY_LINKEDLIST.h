@@ -115,8 +115,8 @@ void after_insert(int s_item, int x){
                 last_insert(x);
                 break;
             }else{
-                srt->next->prev =ptr;
                 ptr->next = srt->next;
+                srt->next->prev =ptr;
                 ptr->prev = srt;
                 srt->next = ptr;
                 return;
@@ -133,5 +133,105 @@ void after_insert(int s_item, int x){
 }
 
 
+
+/*
+ * @ Creating the delete functions
+ * Five delete function to be created.
+ *
+ * 1. First delete
+ * 2. Last delete
+ * 3. Before item delete
+ * 4. After delete
+ * 5. Item delete
+ * */
+
+
+void first_delete(){
+    head->next->prev = NULL;
+    head = head->next;
+}
+
+void last_delete(){
+    tail = tail->prev;
+    tail->next = NULL;
+}
+
+void before_delete(int sitem){
+    node *srt = head;
+    for(;;){
+        if(srt->info == sitem){
+            if(srt->prev==head){
+                first_delete();
+                break;
+            }else if(srt == head){
+                cout << "No before element exist" << endl;
+                break;
+            }else{
+                srt->prev->prev->next = srt;
+                srt->prev = srt->prev->prev;
+                break;
+            }
+        }else{
+            srt = srt->next;
+        }
+
+        if(srt==NULL){
+            cout << "Element not found";
+            return;
+        }
+    }
+}
+
+void after_delete(int sitem){
+    node *srt = head;
+    for(;;){
+        if(srt->info == sitem){
+            if(srt->next == tail){
+                last_delete();
+                break;
+            }else if(srt == tail){
+                cout << "No last node exist" << endl;
+                break;
+            }else{
+                srt->next->next->prev = srt;
+                srt->next = srt->next->next;
+                break;
+            }
+        }else{
+            srt = srt->next;
+        }
+
+        if(srt==NULL){
+            cout << "Item not found";
+            break;
+        }
+    }
+}
+
+
+void given_delete(int sitem){
+    node *srt = head;
+    for(;;){
+        if(srt->info==sitem){
+            if(srt == head){
+                first_delete();
+            }
+            else if(srt == tail){
+                last_delete();
+            }else{
+                srt->next->prev = srt->prev;
+                srt->prev->next = srt->next;
+                break;
+            }
+        }else{
+            srt = srt->next;
+        }
+
+        if(srt==NULL){
+            cout << "Element not found"<<endl;
+            break;
+        }
+    }
+}
 
 #endif //DATA_STRUCTURE_AND_ALGORITHM_TWO_WAY_LINKEDLIST_H

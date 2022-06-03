@@ -10,9 +10,7 @@ int main(){
     cout << "The list is: " << endl;
     traverse();
 
-    cout << "\n\n--------------------\n\n";
-    cout << "Last insert. Insert to what? " ;
-    cin >> inp;
-    after_insert(3,inp);
+    cout << endl << "before delete" << endl;
+    given_delete(3);
     traverse();
 }
